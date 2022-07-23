@@ -1,16 +1,17 @@
 {
   "name": "latex-to-speech",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Latex to speech converter using SRE.",
   "main": "index.js",
   "scripts": {
     "build:tex2mml": "cd tex2mml; node ../node_modules/mathjax-full/components/bin/makeAll",
-    "build:mathjax": "cd node_modules/mathjax-full; npm install mhchemparser",
-    "build": "npm run build:mathjax; npm run build:tex2mml",
+    "postinstall": "cd node_modules/mathjax-full; npm install mhchemparser",
+    "build": "npm run build:tex2mml",
+    "publish": "npm install; npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "sre": "bin/latex-to-speech"
+    "latex-to-speech": "bin/latex-to-speech"
   },
   "repository": {
     "type": "git",
@@ -39,5 +40,11 @@
   "dependencies": {
     "speech-rule-engine": "^4.0.7",
     "yargs": "^17.5.1"
-  }
+  },
+  "files": [
+    "index.js",
+    "LICENSE",
+    "README.md",
+    "bin/"
+  ]
 }

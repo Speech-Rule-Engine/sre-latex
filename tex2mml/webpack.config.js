@@ -5,6 +5,6 @@ module.exports = PACKAGE(
   '../node_modules/mathjax-full/js',    // location of the mathjax library
   [],                                   // packages to link to
   __dirname,                            // our directory
-  '../latex-to-speech'                  // where to put the packaged component
+  '../bin'                              // where to put the packaged component
 );
 

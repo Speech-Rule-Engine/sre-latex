@@ -24,12 +24,7 @@
  *  limitations under the License.
  */
 
-
-//
-//  Load the packages needed for MathJax
-//
-let {tex2mml} = require('./tex2mml');
-let SRE = require('speech-rule-engine');
+let {latexToSpeech} = require('./latex-to-speech.js');
 
 //
 //  Get the command-line arguments
@@ -38,17 +33,13 @@ var argv = require('yargs')
     .demand(1)
     .usage('$0 [SRE options] "math"').argv
 ;
-console.log(argv);
 
 
 var options = Object.assign({}, argv);
 delete options._;
 delete options['$0'];
 
-const run = async function() {
-  await SRE.setupEngine(options);
-  for (let expr of argv._) {
-    console.log(SRE.toSpeech(tex2mml(expr)));
-  }
+const run = function() {
+  latexToSpeech(argv._, options);
 };
 run();
