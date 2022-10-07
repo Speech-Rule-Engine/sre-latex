@@ -29,17 +29,34 @@ let {latexToSpeech} = require('./latex-to-speech.js');
 //
 //  Get the command-line arguments
 //
-var argv = require('yargs')
-    .demand(1)
-    .usage('$0 [SRE options] "math"').argv
-;
+var commander = require('commander');
+commander
+  .version('v0.0.4')
+  .usage('[options] <latex ...>')
+  .option(
+    '-d, --domain [name]',
+    'Speech rule set.'
+  )
+  .option(
+    '-s, --style [name]',
+    'Speech style.'
+  )
+  .option(
+    '-c, --locale [code]',
+    'Locale in ISO639-1.'
+  )
+  .option(
+    '-b, --modality [name]',
+    'Modality: speech, braille, summary, prefix.'
+  )
+  .option(
+    '-k, --markup [name]',
+    'Generate speech output with markup tags.'
+  )
+  .parse(process.argv);
 
-
-var options = Object.assign({}, argv);
-delete options._;
-delete options['$0'];
-
-const run = function() {
-  latexToSpeech(argv._, options);
+const run = async function() {
+  (await latexToSpeech(commander.args, commander.opts()))
+    .forEach(x => console.log(x));
 };
 run();

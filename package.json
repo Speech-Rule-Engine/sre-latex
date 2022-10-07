@@ -1,6 +1,6 @@
 {
   "name": "latex-to-speech",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Latex to speech converter using SRE.",
   "main": "index.js",
   "scripts": {
@@ -19,8 +19,9 @@
   },
   "keywords": [
     "LaTeX",
-    "frontend",
-    "SRE"
+    "Speech",
+    "Accessibility",
+    "Mathematics"
   ],
   "author": "Volker Sorge <Volker.Sorge@gmail.com> (http://www.cs.bham.ac.uk/~vxs)",
   "license": "Apache-2.0",
@@ -39,7 +40,7 @@
   },
   "dependencies": {
     "speech-rule-engine": "^4.0.7",
-    "yargs": "^17.5.1"
+    "commander": "9.4.0"
   },
   "files": [
     "index.js",
